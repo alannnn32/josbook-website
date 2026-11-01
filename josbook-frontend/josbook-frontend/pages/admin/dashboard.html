@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dashboard · Buku Induk JosBook</title>
-<link rel="stylesheet" href="../../assets/css/app.css">
-<link rel="stylesheet" href="../../assets/css/cetak.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard - JosBook</title>
+  <link rel="icon" href="../../assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/app.css">
 </head>
-<body>
-<div class="app"><aside class="sb" id="sidebar"></aside>
-<div class="mn"><header class="tb" id="topbar"></header>
-<main id="konten">
-  <h2>Dashboard</h2>
-  <p class="sub">Peran: admin</p>
-  <div id="isi">Memuat…</div>
-</main></div></div>
-<script src="../../assets/js/core/config.js"></script>
-<script src="../../assets/js/core/auth.js"></script>
-<script src="../../assets/js/core/api.js"></script>
-<script src="../../assets/js/core/guard.js"></script>
-<script src="../../assets/js/core/ui.js"></script>
-<script src="../../assets/js/modules/admin-dashboard.js"></script>
+<body class="halaman-app">
+  <div class="app">
+    <aside id="sidebar" class="sidebar" aria-label="Navigasi utama"></aside>
+    <div id="tirai" class="tirai"></div>
+
+    <div class="utama">
+      <header class="bar-mobile">
+        <button type="button" id="btn-menu" class="tombol-ikon" aria-label="Buka menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <strong>JosBook</strong>
+      </header>
+
+      <main class="konten">
+        <header class="judul-halaman">
+          <h1>Dashboard</h1>
+          <p id="tahun-ajaran">Tahun ajaran -</p>
+        </header>
+        <div id="isi" aria-live="polite"><p class="memuat-teks">Memuat data dashboard...</p></div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../../assets/js/core/config.js"></script>
+  <script src="../../assets/js/core/auth.js"></script>
+  <script src="../../assets/js/core/api.js"></script>
+  <script src="../../assets/js/core/guard.js"></script>
+  <script src="../../assets/js/core/ui.js"></script>
+  <script src="../../assets/js/modules/dashboard.js"></script>
 </body>
 </html>

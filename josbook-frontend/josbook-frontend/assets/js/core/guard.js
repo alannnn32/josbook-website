@@ -1,24 +1,29 @@
-/* Penjaga halaman. INGAT: ini hanya untuk pengalaman pengguna (menyembunyikan menu, mengarahkan).
-   Keamanan sebenarnya ada di backend (middleware role + Policy). */
+/* Penjaga halaman. Cek peran di sini hanya untuk UX; keamanan sebenarnya di backend.
+   Pemakaian:
+     Halaman.mulai({ peran: ['admin'] }, async function (user) { ... });
+     Halaman.mulai({ publik: true }, function () { ... });   // halaman login */
 (function () {
-  window.Guard = {
-    // peranBoleh: ['admin'], ['admin','guru'], dst. Mengembalikan data pengguna segar dari /saya.
-    async wajib(peranBoleh) {
-      if (!Auth.token()) { Auth.keLogin(); return new Promise(function () {}); }
-      var user = Auth.user();
-      if (user && peranBoleh && peranBoleh.indexOf(user.peran) < 0) {
-        location.href = Auth.halamanAwal(user.peran); return new Promise(function () {});
-      }
-      var segar = (await api.get('/saya')).data;         // 401 -> api.js otomatis ke login
-      Auth.perbaruiUser(segar);
-      if (peranBoleh && peranBoleh.indexOf(segar.peran) < 0) {
-        location.href = Auth.halamanAwal(segar.peran); return new Promise(function () {});
-      }
-      var diGanti = /ganti-password\.html$/.test(location.pathname);
-      if (segar.wajib_ganti && !diGanti) {
-        location.href = JOSBOOK.ROOT + 'pages/shared/ganti-password.html'; return new Promise(function () {});
-      }
-      return segar;
+  window.Halaman = {
+    mulai: function (opsi, fn) {
+      var jalan = function () {
+        var user = Auth.user();
+        if (!opsi.publik) {
+          if (!Auth.token() || !user) return Auth.keLogin();
+          if (opsi.peran && opsi.peran.indexOf(user.peran) === -1) {
+            window.location.href = Auth.halamanAwal(user.peran);
+            return;
+          }
+        }
+        return fn(user);
+      };
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', jalan);
+      else jalan();
     },
+
+    keluar: async function () {
+      try { await api.post('/logout', {}, { tanpaRedirect401: true }); } catch (e) { /* abaikan */ }
+      Auth.hapus();
+      Auth.keLogin();
+    }
   };
 })();
