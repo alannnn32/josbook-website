@@ -1,0 +1,9 @@
+/* Cetak register & laporan. F4 = 215 x 330 mm (bawaan), A4 = 210 x 297 mm.
+   Untuk A4: ganti ukuran @page lewat <style> yang dibuat modul cetak.js sesuai pilihan kertas. */
+@page { size: 215mm 330mm; margin: 10mm; }
+@media print {
+  .no-print, .sb, .tb, #toast { display: none !important; }
+  .app { display: block; }
+  #konten { padding: 0; }
+  body { background: #fff; }
+}

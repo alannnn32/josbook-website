@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login · Buku Induk JosBook</title>
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="assets/css/cetak.css">
+</head>
+<body>
+<div class="login card">
+  <h2>Buku Induk</h2>
+  <p class="sub">SMA Negeri 1 Rejoso</p>
+  <form id="form-login" autocomplete="off">
+    <div class="fl" style="grid-template-columns:1fr">
+      <div><label>Masuk sebagai</label><select name="peran"><option value="admin">Admin</option><option value="guru">Guru</option><option value="siswa">Siswa</option></select></div>
+      <div><label id="hint-user">Username</label><input name="username" required></div>
+      <div><label>Password</label><input name="password" type="password" required></div>
+    </div>
+    <label style="display:flex;gap:6px;margin-top:10px"><input type="checkbox" name="ingat"> Ingat saya di perangkat ini</label>
+    <div class="bar" style="margin-top:12px"><button class="btn a" id="masuk" type="submit">Masuk</button></div>
+  </form>
+</div>
+<script src="assets/js/core/config.js"></script>
+<script src="assets/js/core/auth.js"></script>
+<script src="assets/js/core/api.js"></script>
+<script src="assets/js/core/guard.js"></script>
+<script src="assets/js/core/ui.js"></script>
+<script src="assets/js/modules/login.js"></script>
+</body>
+</html>
