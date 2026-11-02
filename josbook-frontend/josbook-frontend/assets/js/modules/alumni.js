@@ -276,8 +276,9 @@ const ADM=[['dash','▦ Dashboard'],['siswa','🎓 Data Siswa'],['form','📝 Fo
 const HREF={dash:'dashboard.html',siswa:'../shared/siswa.html',form:'../shared/siswa-baru.html',naik:'../shared/kenaikan-kelas.html',mutasi:'mutasi.html',guru:'guru.html',alumni:'alumni.html',lacak:'pelacakan.html','i:nilai':'../shared/import.html?t=nilai','i:hadir':'../shared/import.html?t=hadir','i:ekskul':'../shared/import.html?t=ekskul',laporan:'laporan.html',log:'log.html',master:'master.html',cek:'cek-data.html',spek:'spesifikasi.html',setting:'pengaturan.html'};
 const LOGO='../../assets/img/logo.png';
 function page(){return PAGE=='lacak'?lacakPg():alumniPg()}
-function R(){const nav=ADM,ac=n=>n==PAGE;
-$('#app').innerHTML=`<div class="app"><div class="sb"><div class="logo"><img src="${LOGO}" alt=""><div><b>JosBook</b><small>PORTAL<br>AKADEMIK</small></div></div>${nav.map(n=>`<a class="${ac(n[0])?'on':''}" href="${HREF[n[0]]||'#'}">${ICO[n[0]]||''}<span>${n[1].replace(/^\S+\s/,'')}</span></a>`).join('')}<a class="lo" data-a="logout">${ICO.out}<span>Keluar</span></a><div class="role" data-a="umenu" data-i="AS"><b>Admin Sekolah</b><span>Akses penuh</span><em class="chv">⌄</em>${S.um?`<div class="um" onclick="event.stopPropagation()"><label>Tahun ajaran</label><select data-c="ta">${opt(S.tas,S.ta)}</select><button class="btn x" data-a="logout">Keluar</button></div>`:''}</div></div><div class="mn">${page()}</div></div>`}
+function R(){
+  $('#app').innerHTML=`<div class="app"><aside id="sidebar" aria-label="Navigasi utama"></aside><div class="mn">${page()}</div></div>`;
+}
 
 const LSK='bukuinduk_final_v2';
 const snapAll=()=>JSON.stringify({app:'buku-induk',v:2,at:new Date().toISOString(),db,tas:S.tas,cur:CUR,sc:S.sc,school:S.school,id,paper:S.paper});

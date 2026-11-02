@@ -42,6 +42,8 @@ Halaman.mulai({ peran: ['admin'] }, async function (user) {
 });
 ```
 `Halaman.mulai` memeriksa token dan peran, memasang menu, lalu menjalankan fungsi Anda. Error API otomatis ditampilkan.
+Semua halaman admin memakai komponen bersama `pages/components/sidebar.html`, yang dimuat oleh `assets/js/core/admin-sidebar.js`.
+Sertakan skrip tersebut pada halaman admin baru agar navigasi, tautan, dan menu akun tetap konsisten.
 
 ## Aturan kerja bersama
 - Satu fitur = satu branch, gabung lewat Pull Request.

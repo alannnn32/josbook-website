@@ -153,7 +153,8 @@
         ['cek', 'Cek Kualitas Data', 'cek', 'pages/admin/cek-data.html'],
         ['setting', 'Setting', 'setting', 'pages/admin/pengaturan.html']
       ];
-      UI.renderSidebar(menu, aktif, user, 'Akses penuh', 'Menu admin');
+      if (window.AdminSidebar) AdminSidebar.render(aktif, user);
+      else UI.renderSidebar(menu, aktif, user, 'Akses penuh', 'Menu admin');
     },
 
     /* Sidebar guru sesuai desain Figma. Menu disembunyikan menurut user.guru

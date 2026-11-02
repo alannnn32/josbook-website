@@ -1,0 +1,45 @@
+.josbook-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  min-height: 100vh;
+  overflow-y: auto;
+  padding: 16px;
+  background: #0557d3;
+  color: #fff;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  box-sizing: border-box;
+}
+
+.halaman-app .app > .josbook-sidebar { width: 100%; }
+.josbook-sidebar-content { display: flex; flex-direction: column; gap: 24px; }
+.josbook-sidebar-brand { display: flex; align-items: center; gap: 12px; padding: 8px; }
+.josbook-sidebar-brand h1 { margin: 0; font-size: 20px; font-weight: 700; line-height: 1.2; }
+.josbook-sidebar-brand p { margin: 3px 0 0; color: #bfdbfe; font-size: 10px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+.josbook-sidebar-logo { display: grid; width: 48px; height: 48px; flex: none; place-items: center; border: 1px solid rgba(255,255,255,.2); border-radius: 16px; background: rgba(255,255,255,.2); }
+.josbook-sidebar-logo svg { width: 28px; height: 28px; }
+.josbook-sidebar-shortcut { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 16px; background: rgba(255,255,255,.2); color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .15s; }
+.josbook-sidebar-shortcut:hover { background: rgba(255,255,255,.28); }
+.josbook-sidebar-nav { display: grid; gap: 4px; font-size: 14px; font-weight: 500; }
+.josbook-sidebar-nav a { display: flex; align-items: center; gap: 12px; min-height: 42px; padding: 9px 12px; border-radius: 12px; color: #dbeafe; text-decoration: none; transition: background .15s; }
+.josbook-sidebar-nav a:hover { background: rgba(255,255,255,.1); }
+.josbook-sidebar-nav a.aktif { background: rgba(255,255,255,.22); color: #fff; font-weight: 700; }
+.josbook-sidebar svg { width: 20px; height: 20px; flex: none; }
+.josbook-sidebar-footer { position: relative; margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.14); }
+.josbook-sidebar-user { display: flex; width: 100%; align-items: center; gap: 12px; padding: 10px; border: 0; border-radius: 14px; background: rgba(255,255,255,.15); color: #fff; cursor: pointer; text-align: left; }
+.josbook-sidebar-user:hover { background: rgba(255,255,255,.22); }
+.josbook-sidebar-avatar { display: grid; width: 40px; height: 40px; flex: none; place-items: center; border-radius: 12px; background: rgba(255,255,255,.2); font-size: 13px; font-weight: 700; }
+.josbook-sidebar-user-text { flex: 1; min-width: 0; }
+.josbook-sidebar-user-text strong, .josbook-sidebar-user-text small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.josbook-sidebar-user-text strong { font-size: 13px; }
+.josbook-sidebar-user-text small { margin-top: 2px; color: #bfdbfe; font-size: 11px; }
+.josbook-sidebar-chevron { width: 16px !important; height: 16px !important; color: #bfdbfe; }
+.josbook-sidebar .user-menu { position: absolute; right: 0; bottom: calc(100% - 4px); left: 0; z-index: 5; padding: 6px; border-radius: 12px; background: #fff; box-shadow: 0 12px 30px rgba(7,30,80,.25); color: #0f1a2e; }
+.josbook-sidebar .user-menu a, .josbook-sidebar .user-menu button { display: block; width: 100%; padding: 10px 12px; border: 0; border-radius: 8px; background: none; color: inherit; font: inherit; font-size: 14px; text-align: left; text-decoration: none; cursor: pointer; }
+.josbook-sidebar .user-menu a:hover, .josbook-sidebar .user-menu button:hover { background: #eaf1fd; }
+
+@media (max-width: 900px) {
+  .halaman-app .app > .josbook-sidebar { position: fixed; z-index: 40; width: 262px; transform: translateX(-100%); transition: transform .22s ease; }
+  .halaman-app.sb-buka .app > .josbook-sidebar { transform: none; }
+}

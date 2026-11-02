@@ -10,7 +10,7 @@
 
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
-        <aside class="w-64 h-screen bg-[#0557d3] text-white flex flex-col justify-between p-4 font-sans select-none overflow-y-auto hidden md:flex flex-shrink-0">
+        <aside id="sidebar" class="w-64 h-screen bg-[#0557d3] text-white flex flex-col justify-between p-4 font-sans select-none overflow-y-auto hidden md:flex flex-shrink-0">
             <!-- Bagian Atas: Logo & Navigasi -->
             <div class="space-y-6">
                 <!-- Logo & Header -->
@@ -339,5 +339,11 @@
             button.closest('tr').remove();
         }
     </script>
+    <script src="../../assets/js/core/config.js"></script>
+    <script src="../../assets/js/core/auth.js"></script>
+    <script src="../../assets/js/core/api.js"></script>
+    <script src="../../assets/js/core/guard.js"></script>
+    <script src="../../assets/js/core/ui.js"></script>
+    <script src="../../assets/js/core/admin-sidebar.js"></script>
 </body>
 </html>
