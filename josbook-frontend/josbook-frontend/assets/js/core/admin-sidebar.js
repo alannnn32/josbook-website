@@ -47,11 +47,37 @@
     return templatePromise;
   }
 
+  function prepareMobileNavigation(host) {
+    var app = host.closest('.admin-app');
+    if (!app) return;
+
+    var content = Array.prototype.find.call(app.children, function (child) {
+      return child !== host && !child.classList.contains('tirai') &&
+        !child.classList.contains('admin-sidebar-curtain');
+    });
+    if (content && !document.getElementById('btn-menu')) {
+      var bar = document.createElement('header');
+      bar.className = 'admin-mobile-bar';
+      bar.innerHTML = '<button type="button" class="tombol-ikon" id="btn-menu" aria-label="Buka menu">' +
+        '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+        'stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h18"/></svg>' +
+        '</button><strong>JosBook</strong>';
+      content.insertBefore(bar, content.firstChild);
+    }
+
+    if (!app.querySelector('.tirai, .admin-sidebar-curtain')) {
+      var curtain = document.createElement('div');
+      curtain.className = 'admin-sidebar-curtain';
+      app.insertBefore(curtain, host.nextSibling);
+    }
+  }
+
   function render(active, user) {
     var host = document.getElementById('sidebar');
     if (!host) return Promise.resolve();
 
     return loadTemplate().then(function (template) {
+      prepareMobileNavigation(host);
       host.classList.add('josbook-sidebar');
       host.setAttribute('aria-label', 'Navigasi utama');
       host.innerHTML = template.innerHTML;
@@ -81,32 +107,35 @@
 
       var toggle = host.querySelector('#user-tombol');
       var menu = host.querySelector('#user-menu');
-      toggle.addEventListener('click', function () {
+      toggle.onclick = function () {
         menu.hidden = !menu.hidden;
         toggle.setAttribute('aria-expanded', String(!menu.hidden));
-      });
-      host.querySelector('#btn-keluar').addEventListener('click', function () {
+      };
+      host.querySelector('#btn-keluar').onclick = function () {
         if (window.Halaman && typeof Halaman.keluar === 'function') Halaman.keluar();
         else if (window.Auth) {
           Auth.hapus();
           Auth.keLogin();
         }
-      });
-      host.addEventListener('click', function (event) {
-        if (event.target.closest('a')) document.body.classList.remove('sb-buka');
-      });
+      };
+      host.onclick = function (event) {
+        if (event.target.closest('a')) {
+          document.body.classList.remove('sb-buka', 'admin-sidebar-open');
+        }
+      };
 
       var openButton = document.getElementById('btn-menu');
       if (openButton) {
-        openButton.addEventListener('click', function () {
+        openButton.onclick = function () {
           document.body.classList.toggle('sb-buka');
-        });
+          document.body.classList.toggle('admin-sidebar-open');
+        };
       }
-      var curtain = document.getElementById('tirai');
+      var curtain = document.querySelector('.tirai, .admin-sidebar-curtain');
       if (curtain) {
-        curtain.addEventListener('click', function () {
-          document.body.classList.remove('sb-buka');
-        });
+        curtain.onclick = function () {
+          document.body.classList.remove('sb-buka', 'admin-sidebar-open');
+        };
       }
     }).catch(function (error) {
       console.error('Tidak dapat menampilkan sidebar admin:', error);
