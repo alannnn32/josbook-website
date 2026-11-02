@@ -7,8 +7,11 @@
     <!-- Hubungkan dengan CSS utama proyekmu -->
     <link rel="stylesheet" href="../../assets/css/app.css">
 </head>
-<body>
-    <div id="isi" class="main-container">
+<body class="halaman-app">
+    <div class="app admin-app">
+        <aside id="sidebar" aria-label="Navigasi utama"></aside>
+        <div class="utama">
+            <main id="isi" class="main-container">
         <!-- Bagian Konten Utama Form Pendataan -->
         <div class="content-wrapper p-4">
             <h2 class="fw-bold mb-1">Form Pendataan - Siswa Baru</h2>
@@ -121,6 +124,8 @@
                 </div>
             </form>
         </div>
+            </main>
+        </div>
     </div>
 
     <!-- Hubungkan dengan file JS module pendukungmu -->
@@ -129,6 +134,7 @@
     <script src="../../assets/js/core/api.js"></script>
     <script src="../../assets/js/core/guard.js"></script>
     <script src="../../assets/js/core/ui.js"></script>
+    <script src="../../assets/js/core/admin-sidebar.js"></script>
     <script src="../../assets/js/modules/siswa-baru.js"></script>
 </body>
 </html>
