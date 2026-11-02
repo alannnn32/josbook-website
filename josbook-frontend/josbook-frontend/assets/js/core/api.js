@@ -1,6 +1,6 @@
 /* Satu-satunya pintu panggilan jaringan. Modul halaman tidak boleh fetch langsung.
    Saat CONFIG.DUMMY = true, permintaan dijawab dari MOCK di bawah (tanpa backend).
-   Bagian MOCK dan endpoint '/login', '/logout', '/dashboard' adalah ASUMSI sementara;
+   Bagian MOCK dan endpoint '/login', '/logout', '/dashboard', '/guru/beranda' adalah ASUMSI sementara;
    cocokkan dengan docs/05-kontrak-api.md begitu backend siap. */
 (function () {
   function ApiError(status, message, errors) {
@@ -15,7 +15,7 @@
   /* ---------- DATA DUMMY ---------- */
   var AKUN = [
     { username: 'admin', password: 'admin123', user: { id: 1, nama: 'Admin Sekolah', peran: 'admin' } },
-    { username: '198204152008011007', password: 'guru12345', user: { id: 2, nama: 'Joko Susanto', peran: 'guru', guru: { mapel: ['MTK'], kelas_ajar: ['X-1', 'XI-1'], wali: 'XI-1' } } },
+    { username: '198204152008011007', password: 'guru12345', user: { id: 2, nama: 'Sari Wulandari, S.Pd', peran: 'guru', guru: { mapel: ['Matematika'], kelas_ajar: ['X-1', 'XI-1', 'XII-1'], wali: 'X-1' } } },
     { username: '0012345678', password: 'siswa12345', user: { id: 3, nama: 'Cahyo Nugroho', peran: 'siswa' } }
   ];
 
@@ -53,7 +53,10 @@
       return { data: { token: 'dummy-token-' + u.user.peran, user: u.user } };
     },
     'POST /logout': function () { return { message: 'Berhasil keluar.' }; },
-    'GET /dashboard': function () { return { data: DASHBOARD }; }
+    'GET /dashboard': function () { return { data: DASHBOARD }; },
+    'GET /guru/beranda': function () {
+      return { data: { tahun_ajaran: '2026/2027', semester: 'Ganjil', kurikulum: 'Merdeka', siswa_aktif_wali: 3 } };
+    }
   };
 
   function mock(method, path, opsi) {
