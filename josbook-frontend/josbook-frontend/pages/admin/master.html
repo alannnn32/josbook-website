@@ -1,25 +1,343 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Master Kelas & Mapel · Buku Induk JosBook</title>
-<link rel="stylesheet" href="../../assets/css/app.css">
-<link rel="stylesheet" href="../../assets/css/cetak.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JosBook - Portal Akademik (Master Kelas & Mapel)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<div class="app"><aside class="sb" id="sidebar"></aside>
-<div class="mn"><header class="tb" id="topbar"></header>
-<main id="konten">
-  <h2>Master Kelas & Mapel</h2>
-  <p class="sub">Peran: admin</p>
-  <div id="isi">Memuat…</div>
-</main></div></div>
-<script src="../../assets/js/core/config.js"></script>
-<script src="../../assets/js/core/auth.js"></script>
-<script src="../../assets/js/core/api.js"></script>
-<script src="../../assets/js/core/guard.js"></script>
-<script src="../../assets/js/core/ui.js"></script>
-<script src="../../assets/js/modules/master.js"></script>
+<body class="bg-gray-100 font-sans">
+
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 h-screen bg-[#0557d3] text-white flex flex-col justify-between p-4 font-sans select-none overflow-y-auto hidden md:flex flex-shrink-0">
+            <!-- Bagian Atas: Logo & Navigasi -->
+            <div class="space-y-6">
+                <!-- Logo & Header -->
+                <div class="flex items-center space-x-3 px-2 pt-2">
+                    <div class="w-12 h-12 bg-white/25 backdrop-blur-md rounded-2xl flex items-center justify-center p-2 shadow-inner border border-white/20">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold tracking-tight leading-tight">JosBook</h1>
+                        <p class="text-[10px] tracking-wider text-blue-200 uppercase font-medium">Portal Akademik</p>
+                    </div>
+                </div>
+
+                <!-- Form Pendataan Shortcut -->
+                <a href="../shared/siswa-baru.html" class="bg-white/20 backdrop-blur-md border border-white/20 rounded-2xl p-3 flex items-center space-x-3 text-white shadow-sm cursor-pointer hover:bg-white/25 transition block">
+                    <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                    </svg>
+                    <span class="text-sm font-semibold">Form Pendataan</span>
+                </a>
+
+                <!-- Daftar Menu Navigasi -->
+                <nav class="space-y-1 text-sm font-medium text-blue-100">
+                    <a href="dashboard.html" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                        <span>Dashboard</span>
+                    </a>
+
+                    <a href="../shared/siswa.html" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
+                        <span>Data Siswa</span>
+                    </a>
+
+                    <a href="../shared/siswa-baru.html" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                        <span>Form Pendataan</span>
+                    </a>
+
+                    <a href="../shared/kenaikan-kelas.html" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                        <span>Kenaikan Kelas</span>
+                    </a>
+
+                    <a href="mutasi.html" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                        <span>Mutasi Siswa</span>
+                    </a>
+
+                    <a href="guru.html" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        <span>Data Guru</span>
+                    </a>
+
+                    <a href="alumni.html" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                        <span>Alumni & Kontrol Induk</span>
+                    </a>
+
+                    <a href="pelacakan.html" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-4.35-4.35"></path></svg>
+                        <span>Pelacakan Alumni</span>
+                    </a>
+
+                    <a href="../shared/import.html" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        <span>Import Nilai / Data</span>
+                    </a>
+
+                    <a href="laporan.html" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        <span>Laporan</span>
+                    </a>
+
+                    <a href="log.html" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span>Log Aktivitas</span>
+                    </a>
+
+                    <!-- Menu Aktif Master Kelas & Mapel -->
+                    <a href="master.html" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl bg-white/20 text-white font-semibold shadow-sm transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        <span>Master Kelas & Mapel</span>
+                    </a>
+
+                    <a href="cek-data.html" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                        <span>Cek Kualitas Data</span>
+                    </a>
+
+                    <a href="pengaturan.html" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <span>Setting</span>
+                    </a>
+
+                    <a href="../../index.html" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                        <span>Keluar</span>
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Profile User -->
+            <div class="mt-8 pt-4 border-t border-white/10">
+                <div class="bg-white/15 backdrop-blur-md rounded-2xl p-3 flex items-center justify-between cursor-pointer hover:bg-white/20 transition">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center font-bold text-sm text-white shadow-inner">AS</div>
+                        <div>
+                            <p class="text-sm font-semibold leading-tight">Admin Sekolah</p>
+                            <p class="text-[11px] text-blue-200">Akses penuh</p>
+                        </div>
+                    </div>
+                    <svg class="w-4 h-4 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="flex-1 flex flex-col overflow-y-auto">
+            <div class="p-8">
+                <!-- Header Title -->
+                <div class="mb-4">
+                    <h2 class="text-xl font-bold text-gray-900">Master Kelas & Mapel</h2>
+                    <p class="text-xs text-gray-500 mt-0.5">Daftar ini menjadi tabel kelas dan mapel. Kelas dan mapel baru langsung dipakai di seluruh aplikasi (filter, editor nilai, import, PDF). Hanya yang ditambahkan di sini yang bisa dihapus, dan hanya bila belum dipakai.</p>
+                </div>
+
+                <!-- Grid Container (2 Kolom: Kiri Kelas, Kanan Mapel) -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    
+                    <!-- KOTAK KIRI: Kelas / rombel -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xs font-bold text-gray-900 mb-3">Kelas / rombel</h3>
+                            
+                            <!-- Badge Kelas Container -->
+                            <div id="listKelas" class="flex flex-wrap items-center gap-2 mb-6">
+                                <span class="px-3 py-1 bg-gray-50 text-gray-700 rounded-xl text-xs font-medium border border-gray-200 shadow-sm">X-1</span>
+                                <span class="px-3 py-1 bg-gray-50 text-gray-700 rounded-xl text-xs font-medium border border-gray-200 shadow-sm">XI-1</span>
+                                <span class="px-3 py-1 bg-gray-50 text-gray-700 rounded-xl text-xs font-medium border border-gray-200 shadow-sm">XII-1</span>
+                                <div class="inline-flex items-center space-x-1.5 px-3 py-1 bg-gray-50 text-gray-700 rounded-xl text-xs font-medium border border-gray-200 shadow-sm">
+                                    <span>X-7</span>
+                                    <button onclick="hapusElemen(this)" class="text-red-500 hover:text-red-700 transition p-0.5 rounded">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Input Tambah Kelas -->
+                            <div class="flex items-center space-x-2">
+                                <input type="text" id="inputNamaKelas" placeholder="mis. X-2, XI-3, XII-2" class="flex-1 border border-gray-200 rounded-xl px-3 py-2 text-xs font-medium text-gray-800 bg-white shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
+                                <button type="button" onclick="tambahKelas()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm transition whitespace-nowrap">
+                                    Tambah kelas
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KOTAK KANAN: Mata pelajaran -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <h3 class="text-xs font-bold text-gray-900 mb-3">Mata pelajaran</h3>
+                        
+                        <!-- Tabel Mata Pelajaran -->
+                        <div class="overflow-x-auto mb-6 max-h-60">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="border-b border-gray-100 text-[11px] font-semibold text-gray-400">
+                                        <th class="py-2.5 px-2">Kode</th>
+                                        <th class="py-2.5 px-2">Nama</th>
+                                        <th class="py-2.5 px-2 text-right">Tingkat</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabelMapel" class="divide-y divide-gray-50 text-xs text-gray-700">
+                                    <tr>
+                                        <td class="py-2.5 px-2 text-gray-400 font-mono">geo</td>
+                                        <td class="py-2.5 px-2 font-medium text-gray-900">Geografi</td>
+                                        <td class="py-2.5 px-2 text-right text-gray-500">XI, XII</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2.5 px-2 text-gray-400 font-mono">sjl</td>
+                                        <td class="py-2.5 px-2 font-medium text-gray-900">Sejarah Tingkat Lanjut</td>
+                                        <td class="py-2.5 px-2 text-right text-gray-500">XI, XII</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2.5 px-2 text-gray-400 font-mono">bil</td>
+                                        <td class="py-2.5 px-2 font-medium text-gray-900">Bahasa Inggris Tingkat Lanjut</td>
+                                        <td class="py-2.5 px-2 text-right text-gray-500">XI, XII</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2.5 px-2 text-gray-400 font-mono">pkw</td>
+                                        <td class="py-2.5 px-2 font-medium text-gray-900">Prakarya dan Kewirausahaan</td>
+                                        <td class="py-2.5 px-2 text-right text-gray-500">XI, XII</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2.5 px-2 text-gray-400 font-mono">jaw</td>
+                                        <td class="py-2.5 px-2 font-medium text-gray-900">Bahasa Jawa</td>
+                                        <td class="py-2.5 px-2 text-right text-gray-500">X, XI, XII</td>
+                                    </tr>
+                                    <tr class="bg-blue-50/30">
+                                        <td class="py-2.5 px-2 text-gray-400 font-mono">itk</td>
+                                        <td class="py-2.5 px-2 font-medium text-gray-900 flex items-center justify-between">
+                                            <span>Teknik Informatika</span>
+                                            <button onclick="hapusBaris(this)" class="text-red-500 hover:text-red-700 transition p-1 bg-white border border-red-100 rounded-lg shadow-sm">
+                                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                            </button>
+                                        </td>
+                                        <td class="py-2.5 px-2 text-right text-gray-500">X, XI, XII</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Form Tambah Mapel -->
+                        <div class="space-y-3 pt-3 border-t border-gray-100">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                <div>
+                                    <label class="block text-[11px] font-medium text-gray-400 mb-1">Kode (3 huruf)</label>
+                                    <input type="text" id="inputKodeMapel" class="w-full border border-gray-200 rounded-xl px-3 py-2 text-xs font-medium text-gray-800 bg-white shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label class="block text-[11px] font-medium text-gray-400 mb-1">Nama mapel</label>
+                                    <input type="text" id="inputNamaMapel" class="w-full border border-gray-200 rounded-xl px-3 py-2 text-xs font-medium text-gray-800 bg-white shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between pt-1">
+                                <div class="flex items-center space-x-4 text-xs text-gray-600 font-medium">
+                                    <label class="flex items-center space-x-1.5 cursor-pointer">
+                                        <input type="checkbox" name="tingkat" value="X" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                        <span>X</span>
+                                    </label>
+                                    <label class="flex items-center space-x-1.5 cursor-pointer">
+                                        <input type="checkbox" name="tingkat" value="XI" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                        <span>XI</span>
+                                    </label>
+                                    <label class="flex items-center space-x-1.5 cursor-pointer">
+                                        <input type="checkbox" name="tingkat" value="XII" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                        <span>XII</span>
+                                    </label>
+                                </div>
+                                <button type="button" onclick="tambahMapel()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm transition">
+                                    Tambah mapel
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript untuk Menambahkan Data -->
+    <script>
+        function tambahKelas() {
+            const input = document.getElementById('inputNamaKelas');
+            const namaKelas = input.value.trim();
+
+            if (!namaKelas) {
+                alert('Nama kelas tidak boleh kosong!');
+                return;
+            }
+
+            const container = document.getElementById('listKelas');
+            const wrapper = document.createElement('div');
+            wrapper.className = "inline-flex items-center space-x-1.5 px-3 py-1 bg-gray-50 text-gray-700 rounded-xl text-xs font-medium border border-gray-200 shadow-sm";
+            wrapper.innerHTML = `
+                <span>${namaKelas}</span>
+                <button onclick="hapusElemen(this)" class="text-red-500 hover:text-red-700 transition p-0.5 rounded">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                </button>
+            `;
+
+            container.appendChild(wrapper);
+            input.value = ''; // Kosongkan input
+        }
+
+        function tambahMapel() {
+            const kode = document.getElementById('inputKodeMapel').value.trim();
+            const nama = document.getElementById('inputNamaMapel').value.trim();
+
+            if (!kode || !nama) {
+                alert('Kode dan Nama mapel wajib diisi!');
+                return;
+            }
+
+            // Ambil checkbox tingkat yang dicentang
+            const checkboxes = document.querySelectorAll('input[name="tingkat"]:checked');
+            let tingkatArr = [];
+            checkboxes.forEach((cb) => {
+                tingkatArr.push(cb.value);
+            });
+            const tingkatStr = tingkatArr.length > 0 ? tingkatArr.join(', ') : '-';
+
+            const tbody = document.getElementById('tabelMapel');
+            const tr = document.createElement('tr');
+            tr.className = "bg-blue-50/30";
+            tr.innerHTML = `
+                <td class="py-2.5 px-2 text-gray-400 font-mono">${kode}</td>
+                <td class="py-2.5 px-2 font-medium text-gray-900 flex items-center justify-between">
+                    <span>${nama}</span>
+                    <button onclick="hapusBaris(this)" class="text-red-500 hover:text-red-700 transition p-1 bg-white border border-red-100 rounded-lg shadow-sm">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                    </button>
+                </td>
+                <td class="py-2.5 px-2 text-right text-gray-500">${tingkatStr}</td>
+            `;
+
+            tbody.appendChild(tr);
+
+            // Reset input form
+            document.getElementById('inputKodeMapel').value = '';
+            document.getElementById('inputNamaMapel').value = '';
+            checkboxes.forEach(cb => cb.checked = false);
+        }
+
+        function hapusElemen(button) {
+            button.parentElement.remove();
+        }
+
+        function hapusBaris(button) {
+            button.closest('tr').remove();
+        }
+    </script>
 </body>
 </html>
