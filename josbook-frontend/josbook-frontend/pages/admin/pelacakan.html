@@ -1,25 +1,18 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pelacakan Alumni · Buku Induk JosBook</title>
-<link rel="stylesheet" href="../../assets/css/app.css">
-<link rel="stylesheet" href="../../assets/css/cetak.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pelacakan Alumni · JosBook</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- SheetJS untuk Ekspor Excel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
-<body>
-<div class="app"><aside class="sb" id="sidebar"></aside>
-<div class="mn"><header class="tb" id="topbar"></header>
-<main id="konten">
-  <h2>Pelacakan Alumni</h2>
-  <p class="sub">Peran: admin</p>
-  <div id="isi">Memuat…</div>
-</main></div></div>
-<script src="../../assets/js/core/config.js"></script>
-<script src="../../assets/js/core/auth.js"></script>
-<script src="../../assets/js/core/api.js"></script>
-<script src="../../assets/js/core/guard.js"></script>
-<script src="../../assets/js/core/ui.js"></script>
-<script src="../../assets/js/modules/pelacakan.js"></script>
+<body data-page="pelacakan">
+  <div id="app"></div>
+  <div id="md"></div>
+  <div id="ts"></div>
+  <script src="../../assets/js/modules/alumni.js"></script>
 </body>
 </html>
