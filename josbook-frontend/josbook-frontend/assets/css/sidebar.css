@@ -12,15 +12,16 @@
   box-sizing: border-box;
 }
 
-.halaman-app .app > .josbook-sidebar { width: 100%; }
+.admin-app { display: grid; grid-template-columns: 238px minmax(0, 1fr); min-height: 100vh; }
+.admin-app > .josbook-sidebar { width: 238px; min-width: 0; }
+.admin-app > :not(.josbook-sidebar):not(.tirai) { min-width: 0; }
 .josbook-sidebar-content { display: flex; flex-direction: column; gap: 24px; }
 .josbook-sidebar-brand { display: flex; align-items: center; gap: 12px; padding: 8px; }
 .josbook-sidebar-brand h1 { margin: 0; font-size: 20px; font-weight: 700; line-height: 1.2; }
 .josbook-sidebar-brand p { margin: 3px 0 0; color: #bfdbfe; font-size: 10px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
 .josbook-sidebar-logo { display: grid; width: 48px; height: 48px; flex: none; place-items: center; border: 1px solid rgba(255,255,255,.2); border-radius: 16px; background: rgba(255,255,255,.2); }
-.josbook-sidebar-logo svg { width: 28px; height: 28px; }
-.josbook-sidebar-shortcut { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 16px; background: rgba(255,255,255,.2); color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .15s; }
-.josbook-sidebar-shortcut:hover { background: rgba(255,255,255,.28); }
+.josbook-sidebar-logo { overflow: hidden; background: #fff; }
+.josbook-sidebar-logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .josbook-sidebar-nav { display: grid; gap: 4px; font-size: 14px; font-weight: 500; }
 .josbook-sidebar-nav a { display: flex; align-items: center; gap: 12px; min-height: 42px; padding: 9px 12px; border-radius: 12px; color: #dbeafe; text-decoration: none; transition: background .15s; }
 .josbook-sidebar-nav a:hover { background: rgba(255,255,255,.1); }
@@ -40,6 +41,8 @@
 .josbook-sidebar .user-menu a:hover, .josbook-sidebar .user-menu button:hover { background: #eaf1fd; }
 
 @media (max-width: 900px) {
-  .halaman-app .app > .josbook-sidebar { position: fixed; z-index: 40; width: 262px; transform: translateX(-100%); transition: transform .22s ease; }
-  .halaman-app.sb-buka .app > .josbook-sidebar { transform: none; }
+  .admin-app { grid-template-columns: minmax(0, 1fr) !important; }
+  .admin-app > .josbook-sidebar { width: 100%; height: auto; min-height: 0; max-height: 60vh; }
+  .halaman-app .admin-app > .josbook-sidebar { position: fixed; z-index: 40; width: 262px; height: 100vh; max-height: none; transform: translateX(-100%); transition: transform .22s ease; }
+  .halaman-app.sb-buka .admin-app > .josbook-sidebar { transform: none; }
 }

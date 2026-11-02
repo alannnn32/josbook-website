@@ -41,7 +41,7 @@ label{display:block;font-size:11px;color:var(--mu);font-weight:600;margin-bottom
 .phw{display:grid;place-items:center;padding:20px}.ph{width:340px;height:660px;background:var(--bg);border:9px solid #1b2430;border-radius:38px;overflow:hidden;display:flex;flex-direction:column}
 .ph .hd{background:var(--p);color:#fff;padding:26px 18px 16px}.ph .bd2{padding:12px;flex:1;overflow:auto;display:flex;flex-direction:column;gap:10px}.tbr{display:flex;justify-content:space-around;background:#fff;border-top:1px solid var(--ln);padding:10px 0;font-size:11px;color:var(--mu)}.tbr .on{color:var(--p);font-weight:700}.tbr span{cursor:pointer;text-align:center}
 .row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed var(--ln)}.row span{color:var(--mu)}.stamp{border:2px solid var(--a);color:#946200;border-radius:6px;padding:1px 7px;font-weight:800;font-size:10px}
-@media(max-width:860px){.app{grid-template-columns:1fr}.sb{flex-direction:row;overflow:auto}.g4,.g2,.fl{grid-template-columns:1fr 1fr}}
+@media(max-width:860px){.admin-app{grid-template-columns:minmax(0,1fr)}.sb{flex-direction:row;overflow:auto}.g4,.g2,.fl{grid-template-columns:1fr 1fr}}
 @media print{body{background:#fff}.strip,#app,#gr,#lg,#ts{display:none!important}#md{position:static!important;display:block!important;background:none!important;padding:0!important;overflow:visible!important}.mbox,.mbox.w{width:100%!important;max-width:none!important;max-height:none!important;overflow:visible!important;background:none!important;padding:0!important;border-radius:0!important}.mbox>*:not(#pa){display:none!important}#pa{position:static!important;width:100%}.pg{page-break-after:always;margin:0!important}.pg:last-child{page-break-after:auto}}
 .mbox.w2{width:780px}.mbox.w3{width:940px;padding:0}.mbox.w3 .eh{position:sticky;top:0;background:#fff;padding:16px 20px 0;z-index:2;border-bottom:1px solid #e3e8ef}.mbox.w3 .eb{padding:16px 20px}.mbox.w3 .ef{position:sticky;bottom:0;background:#fff;padding:12px 20px;border-top:1px solid #e3e8ef;display:flex;gap:8px;align-items:center}.ft{width:70px;height:92px;border:1px solid var(--ln);display:grid;place-items:center;color:var(--mu);background:#f3f5f8;flex:none;font-size:11px}.dc{font-family:Arial,sans-serif;font-size:11px;color:#000;min-height:980px;position:relative}.ptt{text-align:center;font-weight:700;font-size:14px;line-height:1.5;margin-bottom:12px}.nn{display:flex;justify-content:space-around;margin:10px 0}.nn u{text-decoration:none;border-bottom:1px solid #000;padding:0 30px 0 4px}.fh{font-weight:700;margin:10px 0 3px}.fr{display:grid;grid-template-columns:26px 190px 1fr;padding:1.5px 0}.fr.in{padding-left:26px;grid-template-columns:26px 164px 1fr}.fr .v{border-bottom:1px solid #000}.rs .fr{margin-right:130px}.phs{position:absolute;right:24px;top:100px;display:grid;gap:12px}.phs div{width:100px;height:130px;border:1px solid #000;display:grid;align-items:end;justify-content:center;font-size:10px;padding-bottom:3px}
 .lt{width:100%;border-collapse:collapse;margin:4px 0}.lt td,.lt th{border:1px solid #000;padding:3px 5px;text-align:center}.lt td.l{text-align:left}.lt .gh td{text-align:left;font-weight:700;background:#eee}.kk{border:1px solid #000;margin:8px 0}.kk div{padding:3px 6px}.kk div:first-child{font-weight:700;text-align:center;border-bottom:1px solid #000}
@@ -83,7 +83,7 @@ select,input{border-radius:10px;border-color:#dfe5ee}
 
 
 .strip{display:none!important}
-.app{grid-template-columns:256px 1fr!important;min-height:100vh!important}
+.admin-app{grid-template-columns:238px minmax(0,1fr)!important;min-height:100vh!important}
 .sb{position:sticky!important;top:0;height:100vh!important;padding:0 0 14px!important;overflow:auto}
 .logo{padding:22px 20px 18px!important;gap:12px}.logo img{width:40px;height:40px;border-radius:10px;background:#d9dde5;padding:2px}.logo b{font-size:18px;color:#fff!important;display:block;font-weight:700}.logo small{font-size:11px;letter-spacing:.4px;color:#cfe0ff;opacity:1;font-weight:400;line-height:1.35}
 .sb a{height:44px;margin:0 12px!important;padding:0 14px!important;gap:14px!important;font-size:14px!important;color:#fff!important;border-radius:10px}.sb a svg{width:20px;height:20px;flex:none;filter:none}.sb a.on{background:#3477d5!important;border:1px solid #ffffff40}
@@ -277,7 +277,7 @@ const HREF={dash:'dashboard.html',siswa:'../shared/siswa.html',form:'../shared/s
 const LOGO='../../assets/img/logo.png';
 function page(){return PAGE=='lacak'?lacakPg():alumniPg()}
 function R(){
-  $('#app').innerHTML=`<div class="app"><aside id="sidebar" aria-label="Navigasi utama"></aside><div class="mn">${page()}</div></div>`;
+  $('#app').innerHTML=`<div class="app admin-app"><aside id="sidebar" aria-label="Navigasi utama"></aside><div class="mn">${page()}</div></div>`;
 }
 
 const LSK='bukuinduk_final_v2';
